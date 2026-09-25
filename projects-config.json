@@ -1,0 +1,19 @@
+{
+  "supabaseUrl": "https://rnjcpableasmvoiedkqr.supabase.co",
+  "supabaseAnonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJuamNwYWJsZWFzbXZvaWVka3FyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA2ODE0MTYsImV4cCI6MjA1NjI1NzQxNn0.iBYTjPmMxnURRdrUlndyHGqSbipxBKbGf8vbrXAIWfA",
+  "singleProject": true,
+  "projects": [
+    {
+      "id": "2455 ",
+      "name": "Im Walder",
+      "status": "ready",
+      "paths": {
+        "pdfs": "2455 /pdfs",
+        "outputImages": "2455 /output_images",
+        "outputTiles": "2455 /output_tiles",
+        "teamsFile": "2455 /pdfs/teams.json"
+      }
+    }
+  ],
+  "defaultProject": "2455 "
+}

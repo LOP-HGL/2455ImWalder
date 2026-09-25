@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>PlanViewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="sidebar-toggle" class="sidebar-toggle">
+        <span class="material-icons">menu</span>
+    </button>
+    <button id="fullscreen-toggle" class="fullscreen-toggle">
+        <span class="material-icons">fullscreen</span>
+    </button>
+    <div id="sidebar" class="sidebar">
+        <div id="project-switcher-container">
+            <select id="project-switcher"></select>
+        </div>
+        <div id="nav-menu"></div>
+        <div id="sidebar-logo">
+            <img src="src/logo.png" alt="Logo">
+        </div>
+    </div>
+    <div id="viewer-container">
+        <div id="project-info">
+            <div id="project-title"></div>
+            <div id="team-name"></div>
+        </div>
+        <div id="viewer"></div>
+    </div>
+    
+    <!-- Supabase Client als Modul laden -->
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.38.4/+esm';
+        window.createClient = createClient;
+        
+        // Viewer-Skript als Modul laden
+        import './viewer.js';
+        
+        // Sidebar-Toggle
+        document.getElementById('sidebar-toggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+            document.getElementById('viewer-container').classList.toggle('expanded');
+        });
+
+        // Fullscreen functionality
+        const fullscreenToggle = document.getElementById('fullscreen-toggle');
+        const fullscreenIcon = fullscreenToggle.querySelector('.material-icons');
+
+        fullscreenToggle.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                fullscreenIcon.textContent = 'fullscreen_exit';
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                    fullscreenIcon.textContent = 'fullscreen';
+                }
+            }
+        });
+
+        // Update icon when fullscreen changes
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.textContent = 'fullscreen';
+            }
+        });
+    </script>
+</body>
+</html> 
